@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FORM VALIDATION USING JAVASCRIPT</title>
+    <script>
+        function Validate_Form() {
+
+            var n = document.forms["RegForm"]["name"].value;
+            var m = document.forms["RegForm"]["mobile_phone"];
+            var e = document.forms["RegForm"]["email"];
+            var d = document.forms["RegForm"]["dob"];
+            var s = document.forms["RegForm"]["subject"];
+
+            var letters = /^[a-zA-Z ]{6,20}$/;
+            var mobile_pattern = /^[0-9]{10}$/;
+            var email_pattern = /^[a-zA-Z0-9_.-]+@[a-zA-z]+\.[a-zA-z]{2,4}$/;
+
+            if (n == "") {
+                alert("Please Enter Your Name");
+                document.forms["RegForm"]["name"].focus();
+                return false;
+            }
+
+            else if (n.match(letters)) {
+                alert("Your Name is Valid" + "  " + n);
+
+            }
+
+            else {
+                alert("Please enter Valid Name between 6 to 20 characters");
+                document.forms["RegForm"]["name"].focus();
+                document.forms["RegForm"]["name"].value = "";
+                return false;
+            }
+
+            if (m.value == "") {
+                alert("Please Enter Your Mobile Number");
+                m.focus();
+                return false;
+            }
+
+            else if (m.value.match(mobile_pattern)) {
+                alert("Your Mobile Number is Fine" + "  " + m.value);
+            }
+
+            else {
+                alert("Please enter Valid Mobile Number");
+                m.focus();
+                m.value = "";
+                return false;
+            }
+
+            if (e.value == "") {
+                alert("Please Enter Your Email ID");
+                e.focus();
+                return false;
+            }
+
+            else if (e.value.match(email_pattern)) {
+                alert("Your Email ID is Fine" + "  " + e.value);
+            }
+
+            else {
+                alert("Please enter Valid Email ID");
+                e.focus();
+                e.value = "";
+                return false;
+            }
+
+            if (d.value == "") {
+                alert("Enter your DOB");
+            }
+            else {
+                alert("your DOB is" + " " + d.value);
+            }
+
+            if (s.value.selectIndex < 1) {
+                alert("Please Select any one Course");
+                s.focus();
+                return false;
+            }
+
+            else {
+                alert("Your Selected Course is" + " " + s.value);
+            }
+            return true;
+        }
+
+    </script>
+</head>
+
+<body style="background-color: #ce00ff;">
+    <h1> REGISTRATION FORM </h1>
+    <form id="RegForm" onsubmit="return Validate_Form();" method="GET">
+
+        Name:<br>
+        <input type="text" id="name" size="25" placeholder="Fname">
+        <br>
+        <br>
+
+        Mobile Number: <br>
+        <input type="text" id="mobile_phone" size="20" placeholder="Mobile Number">
+
+        <br>
+        <br>
+
+        Email : <br>
+        <input type="text" id="email" size="50" placeholder="Email">
+        <br>
+        <br>
+
+        Gender:<br>
+        <input type="radio" name="gender">Male&nbsp;
+        <input type="radio" name="gender">Female
+        <br>
+        <br>
+        DOB:<br>
+        <input type="date" id="dob">
+        <br><br>
+
+        SELECT YOUR COURSE :
+        <select type="text" value="subject" id="subject">
+            <option> CSE </option>
+            <option> ECE </option>
+            <option> EEE </option>
+            <option> AERO </option>
+            <option> AI&ML </option>
+            <option> CYBER </option>
+        </select>
+        <br>
+        <br>
+
+        <input type="submit" value="SUBMIT" id="submit">
+        <input type="reset" value="RESET" id="reset">
+    </form>
+</body>
+
+</html>
